@@ -8,7 +8,7 @@
   async function handlePost() {
     if (randNumber !== 0) {
       if (postTitle !== "" || postText !== "") {
-        fetch("http://localhost:3000/api/blogs", {
+        fetch("https://project-blog-production.up.railway.app/api/blogs", {
           method: "POST",
           withCredentials: true,
           credentials: "include",
@@ -55,7 +55,10 @@
 <div class="content">
   <div class="container">
     <h3 class="text-basic">Post:</h3>
-    <form method="POST" action="http://localhost:3000/api/blogs">
+    <form
+      method="POST"
+      action="https://project-blog-production.up.railway.app/api/blogs"
+    >
       <input type="number" name="number" disabled bind:value={randNumber} />
       {#if randNumber !== 0}
         <input
