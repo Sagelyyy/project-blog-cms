@@ -110,18 +110,24 @@
 </div>
 
 <style>
-  .content {
+  .content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  @media (min-width: 768px) {
+    .content {
+    margin: 0 auto;
     margin-top: 75px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: minmax(300px, 900px) 500px;
+    justify-content: center;
   }
+}
 
   form {
     display: flex;
     flex-direction: column;
-    min-width: 800px;
-    max-height: 400px;
-    align-self: center;
   }
 
   input,
@@ -162,7 +168,6 @@
   }
 
   .container {
-    margin: 0 auto;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -170,5 +175,6 @@
     border-radius: 20px;
     justify-content: center;
     max-height: 500px;
+    max-width: 800px;
   }
 </style>
