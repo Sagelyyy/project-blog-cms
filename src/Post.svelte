@@ -1,5 +1,6 @@
 <script>
   import { fade } from "svelte/transition";
+  import Editor from '@tinymce/tinymce-svelte';
   let postError = "";
   let postTitle = "";
   let postText = "";
@@ -70,7 +71,7 @@
           bind:value={postTitle}
           required
         />
-        <textarea
+        <!-- <textarea
           transition:fade
           placeholder="What did you do?"
           name="text"
@@ -79,6 +80,14 @@
           rows="10"
           bind:value={postText}
           required
+        /> -->
+        <Editor 
+          required 
+          name="text" 
+          id="postText" 
+          placeholder="What did you do?" 
+          bind:value={postText} 
+          apikey="h5l5nfe2gpny11zndg9m5f6pyuhq8497lr85e3f36ox7c27t" 
         />
         <button
           transition:fade
