@@ -4,6 +4,10 @@
   import { userStore } from "./store";
 </script>
 
+<svelte:head>
+  <title>LoTJ Dice Roll CMS</title>
+</svelte:head>
+
 <main>
   {#if $userStore}
     <h1>Welcome, {$userStore.user.email.split("@")[0]}</h1>
