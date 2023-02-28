@@ -6,7 +6,6 @@
   let postTitle = "";
   let postText = "";
   let randNumber = 0;
-  let TINYMCE
 
   async function handlePost() {
     if (randNumber !== 0) {
