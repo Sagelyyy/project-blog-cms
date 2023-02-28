@@ -6,7 +6,7 @@
   let postTitle = "";
   let postText = "";
   let randNumber = 0;
-  let tinymce
+  let TINYMCE
 
   async function handlePost() {
     if (randNumber !== 0) {
@@ -89,7 +89,7 @@
           id="postText" 
           placeholder="What did you do?" 
           bind:value={postText} 
-          apikey={TINYMCE} 
+          apiKey={TINYMCE} 
         />
         <button
           transition:fade
