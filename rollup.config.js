@@ -4,8 +4,15 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
+import { config } from 'dotenv';
+import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
+
+const configToReplace = {};
+for (const [key, v] of Object.entries(config().parsed)) {
+  configToReplace[`process.env.${key}`] = `'${v}'`;
+}
 
 function serve() {
 	let server;
@@ -37,7 +44,11 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
-
+		replace({
+			include: ["src/**/*.ts", "src/**/*.svelte"],
+			preventAssignment: true,
+			values: configToReplace,
+		  }),
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
