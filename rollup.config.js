@@ -4,9 +4,14 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
-import { config as configDotenv } from 'dotenv';
+import replace from '@rollup/plugin-replace';
+import dotenv from 'dotenv';
 
-configDotenv();
+const env = dotenv.config().parsed;
+
+Object.keys(env).forEach((key) => {
+	if (!env[key]) env[key] = '';
+  });
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -40,6 +45,10 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		replace({
+			'process.env.TINYMCE': JSON.stringify(process.env.TINYMCE),
+			...env,
+		  }),
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
