@@ -1,6 +1,10 @@
 <script>
   import { fade } from "svelte/transition";
   import Editor from '@tinymce/tinymce-svelte';
+
+  const dotenv = require('dotenv')
+  dotenv.config()
+
   let postError = "";
   let postTitle = "";
   let postText = "";
@@ -87,7 +91,7 @@
           id="postText" 
           placeholder="What did you do?" 
           bind:value={postText} 
-          apikey="h5l5nfe2gpny11zndg9m5f6pyuhq8497lr85e3f36ox7c27t" 
+          apikey={process.env.TINYMCE} 
         />
         <button
           transition:fade
