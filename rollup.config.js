@@ -7,11 +7,7 @@ import css from 'rollup-plugin-css-only';
 import replace from '@rollup/plugin-replace';
 import dotenv from 'dotenv';
 
-const env = dotenv.config().parsed;
-
-Object.keys(env).forEach((key) => {
-	if (!env[key]) env[key] = '';
-  });
+const env = dotenv.config()
 
 const production = !process.env.ROLLUP_WATCH;
 
