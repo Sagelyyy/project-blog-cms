@@ -72,17 +72,7 @@
           bind:value={postTitle}
           required
         />
-        <!-- <textarea
-          transition:fade
-          placeholder="What did you do?"
-          name="text"
-          id="postText"
-          cols="30"
-          rows="10"
-          bind:value={postText}
-          required
-        /> -->
-        <Editor 
+        <Editor
           required 
           name="text" 
           id="postText" 
@@ -184,7 +174,6 @@
     background-color: white;
     border-radius: 20px;
     justify-content: center;
-    max-height: 500px;
     max-width: 800px;
   }
 </style>
