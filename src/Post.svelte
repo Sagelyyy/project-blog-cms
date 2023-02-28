@@ -1,8 +1,6 @@
 <script>
   import { fade } from "svelte/transition";
   import Editor from '@tinymce/tinymce-svelte';
-  import * as dotenv from 'dotenv'
-  dotenv.config()
 
   let postError = "";
   let postTitle = "";
