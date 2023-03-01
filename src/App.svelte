@@ -34,6 +34,16 @@
     color: var(--error) !important;
   }
 
+  :global(.container){
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 20px;
+    justify-content: center;
+    max-width: 800px;
+  }
+
   h1 {
     text-transform: capitalize;
     width: fit-content;
