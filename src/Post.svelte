@@ -22,6 +22,7 @@
           body: JSON.stringify({
             title: postTitle,
             text: postText,
+            status: status,
             number: randNumber,
           }),
         })
@@ -75,7 +76,7 @@
           required
         />
         <select name="status" bind:value={status}>
-          <option value="unpublished">Unpublished</option>
+          <option value="unpublished" selected>Unpublished</option>
           <option value="published">Published</option>
         </select>
         <Editor
