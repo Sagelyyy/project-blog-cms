@@ -6,6 +6,7 @@
   let postError = "";
   let postTitle = "";
   let postText = "";
+  let status = ""
   let randNumber = 0;
 
   async function handlePost() {
@@ -73,6 +74,10 @@
           bind:value={postTitle}
           required
         />
+        <select name="status" bind:value={status}>
+          <option value="unpublished">Unpublished</option>
+          <option value="published">Published</option>
+        </select>
         <Editor
           required 
           name="text" 
