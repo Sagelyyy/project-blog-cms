@@ -10,7 +10,7 @@
 
 <main>
   {#if $userStore}
-    <h1>Welcome, {$userStore.user.email.split("@")[0]}</h1>
+    <h1>Welcome, {$userStore.user.username}</h1>
     <Post />
   {:else}
     <Login />
