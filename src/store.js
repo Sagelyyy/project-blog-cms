@@ -23,3 +23,5 @@ async function getUser() {
 export const userStore = writable(null);
 
 getUser().then((data) => userStore.set(data));
+
+export const postStore = writable(null);

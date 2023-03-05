@@ -1,6 +1,7 @@
 <script>
   import { fade } from "svelte/transition";
   import Editor from "@tinymce/tinymce-svelte";
+  import { postStore } from "./store";
 
   let postError = "";
   let postTitle = "";
@@ -95,6 +96,8 @@
     <h3 class="error text-basic">{postError}</h3>
   </div>
 {/if}
+
+{JSON.stringify($postStore)}
 
 <div class="content">
   <div class="container">

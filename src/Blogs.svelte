@@ -1,6 +1,9 @@
 <script>
-  import { userStore } from "./store";
-  import { toggleUpdate } from "./Post.svelte";
+  import { userStore, postStore } from "./store";
+
+  function setpostStore({ data }) {
+    postStore.set({ data });
+  }
 
   async function getBlogs() {
     try {
@@ -74,14 +77,16 @@
             <p>Posted at {item.date}</p>
             <div>
               <button
-                on:click|preventDefault={() =>
-                  toggleUpdate(
-                    item._id,
-                    item.status,
-                    item.roll,
-                    item.title,
-                    item.text
-                  )}
+                on:click|preventDefault={function () {
+                  let data = {
+                    id: item._id,
+                    status: item.status,
+                    roll: item.roll,
+                    title: item.title,
+                    text: item.text,
+                  };
+                  setpostStore(data);
+                }}
               >
                 <span class="material-symbols-outlined"> edit </span>
               </button>
