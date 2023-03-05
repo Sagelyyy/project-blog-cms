@@ -9,7 +9,16 @@
   let postStatus = "";
   let postId = "";
   let randNumber = 0;
-  let update = false;
+
+  function clearPost() {
+    postError = "";
+    postTitle = "";
+    postText = "";
+    postStatus = "";
+    postId = "";
+    randNumber = 0;
+    $postStore.setPost(null);
+  }
 
   function setPost() {
     postId = $postStore.id;
@@ -17,13 +26,6 @@
     randNumber = $postStore.roll;
     postTitle = $postStore.title;
     postText = $postStore.text;
-
-    // postError = "";
-    // postTitle = "";
-    // postText = "";
-    // postStatus = "";
-    // postId = "";
-    // randNumber = 0;
   }
 
   async function handlePost() {
@@ -66,7 +68,7 @@
     randNumber = roll();
   }
 
-  async function handleUpdate(id, title, text, status, number) {
+  async function handleUpdate() {
     try {
       const res = await fetch(
         `https://project-blog-production.up.railway.app/api/blogs/${id}`,
@@ -78,17 +80,18 @@
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            id,
-            title,
-            text,
-            status,
-            number,
+            id: postId,
+            title: postTitle,
+            text: postText,
+            status: postStatus,
+            number: postNumber,
           }),
         }
       );
     } catch (err) {
       console.log(err);
     } finally {
+      clearPost();
       location.reload();
     }
   }
@@ -131,7 +134,7 @@
           bind:value={postText}
           apiKey={TINYMCE}
         />
-        {#if !update}
+        {#if !$postStore}
           <button
             transition:fade
             class="btn"
@@ -141,7 +144,7 @@
           <button
             transition:fade
             class="btn"
-            on:click|preventDefault={() => handleUpdate()}>Submit</button
+            on:click|preventDefault={() => handleUpdate()}>Update Post</button
           >
         {/if}
       {/if}
@@ -151,7 +154,7 @@
         </button>
       {:else}
         <button class="btn" on:click|preventDefault={() => setPost()}>
-          Update Post
+          Open to update
         </button>
       {/if}
     </form>
