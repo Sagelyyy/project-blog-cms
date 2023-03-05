@@ -157,7 +157,4 @@
   :global(.material-symbols-outlined) {
     display: flex !important;
   }
-  :global(.capitalize) {
-    text-transform: capitalize;
-  }
 </style>

@@ -104,22 +104,12 @@
 
 <style>
   .content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    max-width: 900px;
+    flex-grow: 2;
   }
-  @media (min-width: 768px) {
-    .content {
-      margin: 0 auto;
-      margin-top: 75px;
-      display: grid;
-      grid-template-columns: minmax(300px, 900px) 500px;
-      justify-content: center;
-    }
-  }
-
   .container {
     background-color: var(--accent);
+    padding: 20px;
   }
 
   form {
