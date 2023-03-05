@@ -1,8 +1,8 @@
 <script>
   import { userStore, postStore } from "./store";
 
-  function setpostStore({ data }) {
-    postStore.set({ data });
+  function setpostStore(data) {
+    postStore.set(data);
     console.log($postStore);
   }
 
