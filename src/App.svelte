@@ -127,12 +127,16 @@
     text-transform: capitalize;
     background-color: #9effae;
     border-radius: 20px;
+    width: fit-content;
+    padding: 5px;
   }
 
   :global(.unpublished) {
     text-transform: capitalize;
     background-color: #eceb87;
     border-radius: 20px;
+    width: fit-content;
+    padding: 5px;
   }
 
   :global(.post > p) {
