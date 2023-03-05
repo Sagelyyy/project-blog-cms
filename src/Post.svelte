@@ -2,7 +2,6 @@
   import { fade } from "svelte/transition";
   import Editor from "@tinymce/tinymce-svelte";
   import RollTable from "./Roll-Table.svelte";
-  import Blogs from "./Blogs.svelte";
 
   let postError = "";
   let postTitle = "";
@@ -60,7 +59,6 @@
 
 <div class="content">
   <div class="container">
-    <Blogs />
     <h3 class="text-basic">Post:</h3>
     <form
       method="POST"
