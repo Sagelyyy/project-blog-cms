@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-  <title>LoTJ Dice Roll CMS</title>
+  <title>LoTJ Fates Admin Panel</title>
 </svelte:head>
 
 <main>

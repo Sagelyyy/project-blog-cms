@@ -1,12 +1,13 @@
 <script>
   import { fade } from "svelte/transition";
-  import Editor from '@tinymce/tinymce-svelte';
+  import Editor from "@tinymce/tinymce-svelte";
   import RollTable from "./Roll-Table.svelte";
+  import Blogs from "./Blogs.svelte";
 
   let postError = "";
   let postTitle = "";
   let postText = "";
-  let status = ""
+  let status = "";
   let randNumber = 0;
 
   async function handlePost() {
@@ -59,6 +60,7 @@
 
 <div class="content">
   <div class="container">
+    <Blogs />
     <h3 class="text-basic">Post:</h3>
     <form
       method="POST"
@@ -80,12 +82,12 @@
           <option value="published">Published</option>
         </select>
         <Editor
-          required 
-          name="text" 
-          id="postText" 
-          placeholder="What did you do?" 
-          bind:value={postText} 
-          apiKey={TINYMCE} 
+          required
+          name="text"
+          id="postText"
+          placeholder="What did you do?"
+          bind:value={postText}
+          apiKey={TINYMCE}
         />
         <button
           transition:fade
@@ -104,20 +106,20 @@
 </div>
 
 <style>
-  .content{
+  .content {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
   @media (min-width: 768px) {
     .content {
-    margin: 0 auto;
-    margin-top: 75px;
-    display: grid;
-    grid-template-columns: minmax(300px, 900px) 500px;
-    justify-content: center;
+      margin: 0 auto;
+      margin-top: 75px;
+      display: grid;
+      grid-template-columns: minmax(300px, 900px) 500px;
+      justify-content: center;
+    }
   }
-}
 
   form {
     display: flex;
@@ -160,5 +162,4 @@
     background-color: rgb(94, 179, 94);
     box-shadow: 5px 5px 13px black;
   }
-
 </style>
