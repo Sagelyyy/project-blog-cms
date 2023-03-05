@@ -100,7 +100,6 @@
       {/if}
     </form>
   </div>
-  <RollTable />
 </div>
 
 <style>
