@@ -17,7 +17,7 @@
     postStatus = "";
     postId = "";
     randNumber = 0;
-    $postStore.setPost(null);
+    postStore.set(null);
   }
 
   function setPost() {
@@ -84,7 +84,7 @@
             title: postTitle,
             text: postText,
             status: postStatus,
-            number: postNumber,
+            number: randNumber,
           }),
         }
       );
