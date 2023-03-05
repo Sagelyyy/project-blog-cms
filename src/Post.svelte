@@ -152,7 +152,7 @@
         <button class="btn" on:click|preventDefault={() => handleRoll()}>
           Roll D20
         </button>
-      {:else}
+      {:else if $postStore !== null}
         <button class="btn" on:click|preventDefault={() => setPost()}>
           Open to update
         </button>

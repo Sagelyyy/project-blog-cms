@@ -112,14 +112,11 @@
 
 <style>
   .content {
-    margin: 0 auto;
-    margin-top: 20px;
     display: flex;
     justify-content: center;
     gap: 10px;
     flex-direction: column;
     max-width: 600px;
-    padding: 10px;
   }
   .footer > div > button,
   form > button {

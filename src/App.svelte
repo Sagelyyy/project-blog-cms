@@ -47,6 +47,7 @@
 
   .content {
     display: flex;
+    gap: 25px;
   }
   :global(*) {
     padding: 0;
