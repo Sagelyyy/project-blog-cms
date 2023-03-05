@@ -1,5 +1,6 @@
 <script>
   import { userStore } from "./store";
+  import { toggleUpdate } from "./Post.svelte";
 
   async function getBlogs() {
     try {
@@ -61,12 +62,30 @@
         </div>
         <div class="post">
           <h1>{item.title}</h1>
-          <h3>{item.status}</h3>
+          {#if item.status == "published"}
+            <h3 class="published">{item.status}</h3>
+          {:else}
+            <h3 class="unpublished">{item.status}</h3>
+          {/if}
           <h2>{item.user.username}</h2>
           <div class="separator" />
           <p>{@html item.text}</p>
           <div class="footer">
             <p>Posted at {item.date}</p>
+            <div>
+              <button
+                on:click|preventDefault={() =>
+                  toggleUpdate(
+                    item._id,
+                    item.status,
+                    item.roll,
+                    item.title,
+                    item.text
+                  )}
+              >
+                <span class="material-symbols-outlined"> edit </span>
+              </button>
+            </div>
             {#if $userStore !== null && $userStore.user.admin}
               <form
                 method="POST"

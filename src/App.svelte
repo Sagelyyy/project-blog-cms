@@ -18,6 +18,10 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
   />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />
 </svelte:head>
 
 <main>
@@ -117,6 +121,19 @@
     width: 50px;
     border-radius: 20px;
   }
+
+  :global(.published) {
+    text-transform: capitalize;
+    background-color: #9effae;
+    border-radius: 20px;
+  }
+
+  :global(.unpublished) {
+    text-transform: capitalize;
+    background-color: #eceb87;
+    border-radius: 20px;
+  }
+
   :global(.post > p) {
     color: var(--dark);
   }

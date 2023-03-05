@@ -1,13 +1,25 @@
 <script>
   import { fade } from "svelte/transition";
   import Editor from "@tinymce/tinymce-svelte";
-  import RollTable from "./Roll-Table.svelte";
 
   let postError = "";
   let postTitle = "";
   let postText = "";
-  let status = "";
+  let postStatus = "";
+  let postId = "";
   let randNumber = 0;
+  let update = false;
+
+  export function toggleUpdate(id, status, roll, title, text) {
+    update = !update;
+    if (update) {
+      postId = id;
+      postStatus = status;
+      randNumber = roll;
+      postTitle = title;
+      postText = text;
+    }
+  }
 
   async function handlePost() {
     if (randNumber !== 0) {
@@ -22,7 +34,7 @@
           body: JSON.stringify({
             title: postTitle,
             text: postText,
-            status: status,
+            status: postStatus,
             number: randNumber,
           }),
         })
@@ -47,6 +59,33 @@
 
   function handleRoll() {
     randNumber = roll();
+  }
+
+  async function handleUpdate(id, title, text, status, number) {
+    try {
+      const res = await fetch(
+        `https://project-blog-production.up.railway.app/api/blogs/${id}`,
+        {
+          method: "PUT",
+          withCredentials: true,
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id,
+            title,
+            text,
+            status,
+            number,
+          }),
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    } finally {
+      location.reload();
+    }
   }
 </script>
 
@@ -75,7 +114,7 @@
           bind:value={postTitle}
           required
         />
-        <select name="status" bind:value={status}>
+        <select name="status" bind:value={postStatus}>
           <option value="unpublished" selected>Unpublished</option>
           <option value="published">Published</option>
         </select>
@@ -87,11 +126,19 @@
           bind:value={postText}
           apiKey={TINYMCE}
         />
-        <button
-          transition:fade
-          class="btn"
-          on:click|preventDefault={() => handlePost()}>Submit</button
-        >
+        {#if !update}
+          <button
+            transition:fade
+            class="btn"
+            on:click|preventDefault={() => handlePost()}>Submit</button
+          >
+        {:else}
+          <button
+            transition:fade
+            class="btn"
+            on:click|preventDefault={() => handleUpdate()}>Submit</button
+          >
+        {/if}
       {/if}
       {#if randNumber === 0}
         <button class="btn" on:click|preventDefault={() => handleRoll()}>
