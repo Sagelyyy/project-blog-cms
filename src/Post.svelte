@@ -108,6 +108,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    background-color: var(--accent);
   }
   @media (min-width: 768px) {
     .content {
