@@ -11,19 +11,19 @@
   let randNumber = 0;
   let update = false;
 
-  if ($postStore) {
+  function setPost() {
     postId = $postStore.id;
     postStatus = $postStore.status;
     randNumber = $postStore.roll;
     postTitle = $postStore.title;
     postText = $postStore.text;
-  } else {
-    postError = "";
-    postTitle = "";
-    postText = "";
-    postStatus = "";
-    postId = "";
-    randNumber = 0;
+
+    // postError = "";
+    // postTitle = "";
+    // postText = "";
+    // postStatus = "";
+    // postId = "";
+    // randNumber = 0;
   }
 
   async function handlePost() {
@@ -145,9 +145,13 @@
           >
         {/if}
       {/if}
-      {#if randNumber === 0}
+      {#if randNumber === 0 && !$postStore}
         <button class="btn" on:click|preventDefault={() => handleRoll()}>
           Roll D20
+        </button>
+      {:else}
+        <button class="btn" on:click|preventDefault={() => setPost()}>
+          Update Post
         </button>
       {/if}
     </form>
