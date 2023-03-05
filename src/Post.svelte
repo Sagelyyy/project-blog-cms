@@ -92,7 +92,6 @@
       console.log(err);
     } finally {
       clearPost();
-      location.reload();
     }
   }
 </script>
