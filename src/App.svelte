@@ -7,13 +7,25 @@
 
 <svelte:head>
   <title>LoTJ Fates Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+  />
 </svelte:head>
 
 <main>
   {#if $userStore}
     <h1>Welcome, {$userStore.user.username}</h1>
-    <Blogs />
-    <Post />
+    <div class="content">
+      <Blogs />
+      <Post />
+    </div>
   {:else}
     <Login />
   {/if}
@@ -25,6 +37,10 @@
       grid-template-rows: 177px 1fr;
       grid-template-columns: none !important;
     }
+  }
+
+  .content {
+    display: flex;
   }
   :global(*) {
     padding: 0;
