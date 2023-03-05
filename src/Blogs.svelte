@@ -3,6 +3,7 @@
 
   function setpostStore({ data }) {
     postStore.set({ data });
+    console.log($postStore);
   }
 
   async function getBlogs() {
