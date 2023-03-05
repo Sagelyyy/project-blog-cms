@@ -68,7 +68,7 @@
     randNumber = roll();
   }
 
-  async function handleUpdate() {
+  async function handleUpdate(id) {
     try {
       const res = await fetch(
         `https://project-blog-production.up.railway.app/api/blogs/${id}`,
@@ -80,7 +80,7 @@
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            id: postId,
+            id,
             title: postTitle,
             text: postText,
             status: postStatus,
@@ -144,7 +144,8 @@
           <button
             transition:fade
             class="btn"
-            on:click|preventDefault={() => handleUpdate()}>Update Post</button
+            on:click|preventDefault={() => handleUpdate($postStore.id)}
+            >Submit Update</button
           >
         {/if}
       {/if}
