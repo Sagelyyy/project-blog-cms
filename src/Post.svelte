@@ -11,15 +11,19 @@
   let randNumber = 0;
   let update = false;
 
-  export function toggleUpdate(id, status, roll, title, text) {
-    update = !update;
-    if (update) {
-      postId = id;
-      postStatus = status;
-      randNumber = roll;
-      postTitle = title;
-      postText = text;
-    }
+  if ($postStore) {
+    postId = $postStore.id;
+    postStatus = $postStore.status;
+    randNumber = $postStore.roll;
+    postTitle = $postStore.title;
+    postText = $postStore.text;
+  } else {
+    postError = "";
+    postTitle = "";
+    postText = "";
+    postStatus = "";
+    postId = "";
+    randNumber = 0;
   }
 
   async function handlePost() {
@@ -97,8 +101,6 @@
   </div>
 {/if}
 
-{JSON.stringify($postStore)}
-
 <div class="content">
   <div class="container">
     <h3 class="text-basic">Post:</h3>
@@ -107,7 +109,7 @@
       action="https://project-blog-production.up.railway.app/api/blogs"
     >
       <input type="number" name="number" disabled bind:value={randNumber} />
-      {#if randNumber !== 0}
+      {#if randNumber !== 0 || $postStore}
         <input
           transition:fade
           placeholder="Title"

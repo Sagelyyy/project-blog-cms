@@ -82,7 +82,7 @@
                   let data = {
                     id: item._id,
                     status: item.status,
-                    roll: item.roll,
+                    roll: item.number,
                     title: item.title,
                     text: item.text,
                   };
