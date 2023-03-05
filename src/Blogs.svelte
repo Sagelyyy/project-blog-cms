@@ -67,15 +67,6 @@
           <p>{@html item.text}</p>
           <div class="footer">
             <p>Posted at {item.date}</p>
-            <div>
-              <button
-                ><span class="comment-btn material-symbols-outlined">
-                  forum <p>
-                    {item.comments.length > 0 ? item.comments.length : ""}
-                  </p>
-                </span></button
-              >
-            </div>
             {#if $userStore !== null && $userStore.user.admin}
               <form
                 method="POST"
