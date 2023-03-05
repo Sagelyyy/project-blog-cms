@@ -2,6 +2,7 @@
   import Blogs from "./Blogs.svelte";
   import Login from "./Login.svelte";
   import Post from "./Post.svelte";
+  import RollTable from "./Roll-Table.svelte";
   import { userStore } from "./store";
 </script>
 
@@ -23,8 +24,9 @@
   {#if $userStore}
     <h1>Welcome, {$userStore.user.username}</h1>
     <div class="content">
-      <Blogs />
       <Post />
+      <Blogs />
+      <RollTable />
     </div>
   {:else}
     <Login />

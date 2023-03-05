@@ -108,7 +108,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: var(--accent);
   }
   @media (min-width: 768px) {
     .content {
@@ -118,6 +117,10 @@
       grid-template-columns: minmax(300px, 900px) 500px;
       justify-content: center;
     }
+  }
+
+  .container {
+    background-color: var(--accent);
   }
 
   form {
